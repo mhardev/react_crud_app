@@ -1,0 +1,31 @@
+{
+  "products": [
+    {
+      "name": "Samsung S24",
+      "brand": "Samsung",
+      "category": "Phone",
+      "price": "$899",
+      "description": "Flagship Phone",
+      "createdAt": "2024-01-01",
+      "id": "1"
+    },
+    {
+      "name": "Samsung S24 Plus",
+      "brand": "Samsung",
+      "category": "Phone",
+      "price": "$1099",
+      "description": "Flagship Phone",
+      "createdAt": "2024-01-01",
+      "id": "2"
+    },
+    {
+      "name": "Samsung S24 Ultra",
+      "brand": "Samsung",
+      "category": "Phone",
+      "price": "$1599",
+      "description": "Flagship Phone",
+      "createdAt": "2024-01-01",
+      "id": "3"
+    }
+  ]
+}
