@@ -23,7 +23,7 @@ function ProductList(props) {
   const [products, setProducts] = useState([]);
 
   function fetchProducts() {
-    fetch("http://localhost:3001/products")
+    fetch("/api/products")
       .then((response) => {
         if(!response.ok) {
           throw new Error ("Unexpected Server Response");
@@ -31,22 +31,20 @@ function ProductList(props) {
         return response.json();
       })
       .then((data) => {
-        //console.log(data)
         setProducts(data);
       })
       .catch((error) => console.log("Error", error));
   }
-
   //fetchProducts()
   useEffect(() => fetchProducts(), []);
 
   function deleteProduct(id) {
-    fetch("http://localhost:3001/products/" + id, {
+    fetch("/api/products/" + id, {
       method: 'DELETE'
     })
       .then((response) => response.json())
       .then(() => fetchProducts());
-  }
+  }  
 
   return(
     <>
@@ -115,9 +113,7 @@ function ProductForm(props) {
     }
 
     if(props.product.id) {
-      //update product
-      product.createdAt = new Date().toISOString().slice(0, 10);
-      fetch("http://localhost:3001/products/" + props.product.id, {
+      fetch("/api/products/" + props.product.id, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -135,9 +131,7 @@ function ProductForm(props) {
         console.error("There was a problem with the fetch operation:", error);
       });
     } else {
-      //create new product
-      product.createdAt = new Date().toISOString().slice(0, 10);
-      fetch("http://localhost:3001/products", {
+      fetch("/api/products", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
