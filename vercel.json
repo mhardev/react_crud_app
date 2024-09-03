@@ -1,24 +1,22 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "server.js",
-        "use": "@vercel/node",
-        "config": {
-          "includeFiles": ["db.json"]
-        }
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["db.json"]
       }
-    ],
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "/api/$1",
-        "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"]
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/"
-      }
-    ]
-  }
-  
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/server.js"
+    }
+  ]
+}

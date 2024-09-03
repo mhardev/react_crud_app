@@ -1,10 +1,15 @@
 const jsonServer = require('json-server');
-const server = jsonServer.create();
 const path = require('path');
+const express = require('express');
+
+const server = jsonServer.create();
 const router = jsonServer.router(path.join(__dirname, 'db.json'));
 const middlewares = jsonServer.defaults();
 
-// Use default middlewares (logger, static, cors and no-cache)
+// Serve static files from the "public" directory
+server.use(express.static(path.join(__dirname, 'public')));
+
+// Use default middlewares (logger, static, cors, and no-cache)
 server.use(middlewares);
 
 // Rewriter to support custom routes
